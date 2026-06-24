@@ -31,7 +31,7 @@ procedimento top ()
       escreval("{1} Urgercia (Vermelho)")
       escreval("{2} Urgente (Amarelo)")
       escreval("{3} Pouco Urgente (Verde)")
-      escreval("escolha as opçoes acima")
+      escreval("escolha as opçoes acima (digite 10 para finalizar)")
       leia(numero)
       se(numero <> 10) entao
         urgencia <- urgencia + 1
