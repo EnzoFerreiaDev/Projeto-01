@@ -1,52 +1,66 @@
 algoritmo "Semaforo"
+
 var
-  ciclo, tempo : inteiro
+  ciclo, estadoatual, contador: inteiro
 
 inicio
+  estadoatual <- 1
+  contador <- 5
   ciclo <- 0
 
   escreval("SISTEMA DE SINAL")
 
-  repita
-    escreval("VIA A: verde | VIA B: vermelho")
-    para tempo de 1 ate 5 faca
-      escreval("tempo restante: ", 6 - tempo, " s")
-    fimpara
+  enquanto (ciclo < 3) faca
+    escolha estadoatual
+      caso 1
+        escreval("VIA A: verde | VIA B: vermelho - Tempo Restante: ", contador)
+        escreval()
 
-    escreval()
+      caso 2
+        escreval("VIA A: amarelo | VIA B: vermelho - Tempo Restante: ", contador)
+        escreval()
 
-    escreval("VIA A: amarelo | VIA B: vermelho")
-    para tempo de 1 ate 4 faca
-      escreval("tempo restante: ", 5 - tempo, " s")
-    fimpara
+      caso 3
+        escreval("VIA A: vermelho | VIA B: verde - Tempo Restante: ", contador)
+        escreval()
 
-    escreval()
+      caso 4
+        escreval("VIA A: vermelho | VIA B: amarelo - Tempo Restante: ", contador)
+        escreval()
 
-    escreval("VIA A: vermelho | VIA B: verde")
-    para tempo de 1 ate 6 faca
-      escreval("tempo restante: ", 7- tempo, " s")
-    fimpara
+      caso 5
+        escreval("VIA A: vermelho | VIA B: vermelho - Tempo Restante: ", contador)
+        escreval()
 
-    escreval()
+    fimescolha
 
-    escreval("VIA A: vermelho | VIA B: amarelo")
-    para tempo de 1 ate 4 faca
-      escreval("tempo restante: ", 5- tempo, " s")
-    fimpara
+    //Aqui entraria o botao se o prefeito quisesse
 
-    escreval()
+    contador <- contador - 1
 
-    escreval("VIA A: vermelho | VIA B: vermelho")
-    para tempo de 1 ate 2 faca
-      escreval("Aguarde...")
-    fimpara
+    se (contador = 0) entao
 
-    escreval()
+      se (estadoatual = 5) entao
+        estadoatual <- 1
+        ciclo <- ciclo + 1
+      senao
+        estadoatual <- estadoatual + 1
+      fimse
 
-    ciclo <- ciclo + 1
-    escreval("ciclo ", ciclo, " completo")
+      escolha estadoatual
+        caso 1
+          contador <- 5
+        caso 2
+          contador <- 4
+        caso 3
+          contador <- 6
+        caso 4
+          contador <- 4
+        caso 5
+          contador <- 2
+      fimescolha
 
-  ate(ciclo = 3)
+    fimse
 
-
+  fimenquanto
 fimalgoritmo
