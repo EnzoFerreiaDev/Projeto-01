@@ -3,44 +3,30 @@ algoritmo "Triagem Posto de Saude"
 var
   nomes: vetor [1..5] de caractere
   numeros: vetor [1..5] de inteiro
-  cont, urgencia, i, numero, c: inteiro
-  resp, v, nome: caractere
+  cont, i, c, aux: inteiro
+  auxNome: caractere
 
 procedimento top ()
   inicio
-
     cont <- 0
-    nome <- ""
 
     escreval("----------------------")
     escreval("SISTEMA POSTO DE SAUDE")
     escreval("Ola, Seja Bem-Vindo ao sistema!")
-    enquanto nome <> "sair" faca
-      escreval("Quais sao os nomes do Paciente? (Digite (sair) para finalizar)")
-      escreval("Minimo 5 pacientes")
-      leia(nome)
-      se (nome <> "sair") entao
-        cont <- cont + 1
-        nomes[cont] <- nome
-      fimse
-    fimenquanto
 
-    enquanto numero <> 10 faca
+    para i de 1 ate 5 faca
+      cont <- cont + 1
       escreval("----------------------")
+      escreval("Nome do paciente ", i, ":")
+      leia(nomes[i])
+
       escreval("Qual e o Nivel de Atendimento?")
-      escreval("{1} Urgercia (Vermelho)")
+      escreval("{1} Urgencia (Vermelho)")
       escreval("{2} Urgente (Amarelo)")
       escreval("{3} Pouco Urgente (Verde)")
-      escreval("escolha as opçoes acima (digite 10 para finalizar)")
-      leia(numero)
-      se(numero <> 10) entao
-        urgencia <- urgencia + 1
-        numeros[urgencia] <- numero
-      fimse
-    fimenquanto
-
-
-fimprocedimento
+      leia(numeros[i])
+    fimpara
+  fimprocedimento
 
 inicio
 
@@ -48,13 +34,26 @@ inicio
   limpatela
   escreval("-----------------------")
   escreval("LISTAGEM DE ATENDIMENTO")
-  escreval("-----------------------")
+
+  para i de 1 ate cont - 1 faca
+    para c de 1 ate cont - i faca
+      se numeros[c] > numeros[c + 1] entao
+        aux <- numeros[c]
+        numeros[c] <- numeros[c + 1]
+        numeros[c + 1] <- aux
+
+        auxNome <- nomes[c]
+        nomes[c] <- nomes[c + 1]
+        nomes[c + 1] <- auxNome
+      fimse
+    fimpara
+  fimpara
 
   para i de 1 ate cont faca
-    escreval("O nivel de Atendimento do ", nomes[i], " e de ", numeros[i])
+    escreval(nomes[i], " - Nivel: ", numeros[i])
   fimpara
-  escreval
 
   escreval("Finalizando...")
 
+fimalgoritmo
 fimalgoritmo
