@@ -34,7 +34,7 @@ inicio
                escreval("Digite o nome do produto: ")
                leia(produtos[totalProdutos + 1].nome)
 
-               escreval("Digite o Pre�o do Produto: ")
+               escreval("Digite o Preco do Produto: ")
                leia(produtos[totalProdutos + 1].preco)
 
                escreval("Digite a Quantidade do Produto: ")
@@ -124,7 +124,7 @@ inicio
             caso 7
                 escreva("Saindo...")
             outrocaso
-                escreva("Op��o inv�lida")
+                escreva("Opçaoo invlida!")
         fimescolha
-    at� opcao = 7
+    ate opcao = 7
 Fimalgoritmo
